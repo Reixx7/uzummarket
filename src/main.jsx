@@ -11,6 +11,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Ezo />,
+   
+  },
+   {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/product/:id",
+    element: <ProductPage />,
   },
 ]);
 createRoot(document.getElementById('root')).render(
@@ -18,3 +27,6 @@ createRoot(document.getElementById('root')).render(
    <RouterProvider router={router} />
   </StrictMode>,
 )
+
+
+
