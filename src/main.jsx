@@ -6,10 +6,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Ezo from './pages/Ezo.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Ezo />,
   },
 ]);
 createRoot(document.getElementById('root')).render(
