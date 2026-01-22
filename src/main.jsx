@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Ezo from './pages/Ezo.jsx';
+import ProductPage from './pages/ProductPage.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,10 +18,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
-  {
-    path: "/product/:id",
-    element: <ProductPage />,
-  },
+   {
+     path: "/product/:id",
+     element: <ProductPage />,
+   },
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -1,9 +1,32 @@
 import React, { useState, useEffect } from "react";
-
+import { Link, useParams } from 'react-router-dom'
 const API_URL = "https://6967d2d3bbe157c088b31b02.mockapi.io/api/products";
 
 const Ezo = () => {
-  const [products, setProducts] = useState([]);
+   const {id} = useParams()
+  const [products, setProducts] = useState([])
+  const getProduct = async()=> {
+    const request = await fetch('https://6967d2d3bbe157c088b31b02.mockapi.io/api/products')
+    const response = await request.json()
+
+    // const FindProduct = response.find(item => item.id === 2)
+    // console.log(FindProduct);
+
+    console.log(response);
+    setProducts(response)
+  }
+  useEffect(()=> {
+    getProduct()
+  },[])
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
   const [searchText, setSearchText] = useState("");
   const [sortType, setSortType] = useState("");
 
@@ -101,7 +124,8 @@ const Ezo = () => {
                 ? product.price - (product.price * product.discount) / 100
                 : product.price;
 
-            return (
+            return (  
+           <Link key={product.id} to={`/product/${product.id}`}>
               <div
                 key={product.id}
                 className="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition"
@@ -140,7 +164,7 @@ const Ezo = () => {
                 <button className="w-full bg-purple-600 text-white py-2 rounded-lg text-sm hover:bg-purple-700">
                   🛒 Ertaga
                 </button>
-              </div>
+              </div> </Link>
             );
           })}
         </div>
