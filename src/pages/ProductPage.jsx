@@ -7,7 +7,10 @@ export default function ProductPage() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
-
+  const [show24, setShow24] = useState(false);
+    const [show12, setShow12] = useState(false);
+    const [show6, setShow6] = useState(false);
+    const [show3, setShow3] = useState(false);
   const getProduct = async () => {
     try {
       setLoading(true);
@@ -308,30 +311,60 @@ export default function ProductPage() {
               </div>
 
               {/* INSTALLMENTS */}
-              <div className="flex gap-2 mb-4">
-                {[24, 12, 6, 3].map((m) => (
-                  <button
-                    key={m}
-                    className={`flex-1 py-2 rounded-lg text-sm border ${
-                      m === 24 ? "bg-yellow-300 border-yellow-400 font-semibold" : "bg-gray-100"
-                    }`}
-                  >
-                    {m} oy
-                  </button>
-                ))}
-              </div>
+          <div className="flex gap-2 mb-4"  >
+             
 
-              <div className="bg-purple-50 text-purple-700 text-sm p-3 rounded-lg mb-4">
-                {(product.price / 24).toFixed(0).toLocaleString()} so'm × 24 oy
+      <button 
+        onClick={ () => setShow24(prev => !prev) }
+        className="flex-1 py-2 rounded-lg text-sm border bg-yellow-300 border-yellow-400 font-semibold">
+        24 месяца
+      </button>
+      <button
+        onClick={() => setShow12(prev => !prev)}
+        className="flex-1 py-2 rounded-lg text-sm border bg-yellow-300 border-yellow-400 font-semibold">
+        12 месяцев
+      </button>
+       <button
+        onClick={() => setShow6(prev => !prev)}
+        className="flex-1 py-2 rounded-lg text-sm border bg-yellow-300 border-yellow-400 font-semibold">
+        6 месяцев
+      </button>
+       <button
+        onClick={() => setShow3(prev => !prev)}
+        className="flex-1 py-2 rounded-lg text-sm border bg-yellow-300 border-yellow-400 font-semibold">
+        3 месяца
+      </button>
+                  
+                  
               </div>
+          
+            {show24 && (
+        <div className="bg-purple-50 text-purple-700 text-sm p-3 rounded-lg mb-4">
+          {((product.price / 24).toFixed(0)).toLocaleString()} сум × 24 месяца
+        </div>
+      )}
+     { show12 && (
+        <div className="bg-purple-50 text-purple-700 text-sm p-3 rounded-lg mb-4">
+          {((product.price / 12).toFixed(0)).toLocaleString()} сум × 12 месяцев
+        </div>
+      )}
+       { show6 && (
+        <div className="bg-purple-50 text-purple-700 text-sm p-3 rounded-lg mb-4">
+          {((product.price / 6).toFixed(0)).toLocaleString()} сум × 6 месяцев
+        </div>
+      )}
+       { show3 && (
+        <div className="bg-purple-50 text-purple-700 text-sm p-3 rounded-lg mb-4">
+          {((product.price / 3).toFixed(0)).toLocaleString()} сум × 3 месяца
+        </div>
+      )}
+      
 
               <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 rounded-lg mb-3 transition">
                 Добавить в корзину
               </button>
 
-              <button className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-4 rounded-lg mb-4 transition">
-                Купить сейчас
-              </button>
+              
 
               <div className="flex items-center gap-2 text-sm mb-2 text-green-600">
                 <span>🚚 Ertaga yetkazib beramiz</span>
