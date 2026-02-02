@@ -2,6 +2,7 @@ import React from 'react';
 import notfound from './pages/Notfound.jsx';
 import { Link, Outlet } from 'react-router-dom';
 import NotFound from './pages/Notfound.jsx';
+import WildberriesRegister from './pages/WildberriesRegister.jsx';
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
       <main>
         <Outlet />
       </main> */}
-      <NotFound/>
+      {/* <NotFound/> */}
+      <WildberriesRegister/>
     </>
   );
 };
