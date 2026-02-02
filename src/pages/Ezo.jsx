@@ -1,3 +1,4 @@
+import { Camera } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom'
 const API_URL = "https://6967d2d3bbe157c088b31b02.mockapi.io/api/products";
@@ -62,16 +63,18 @@ const Ezo = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
-      <header className="bg-white border-b">
+      <header className="bg-gradient-to-r from-pink-700 to-purple-700 border-b">
+        <div className="flex items-center gap-4 py-4">
+            <button className="text-2xl text-white">☰</button>
+            <h1 className="text-3xl text-white font-bold">wildberries</h1>
+            
+            
+        </div>
+           
+       
         <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <img
-                src="https://uzum.com/images/services/market-horizontal-logo.png"
-                alt=""
-                className="w-[120px]"
-              />
-            </div>
+           
 
             <button className="flex items-center gap-2 bg-purple-100 text-purple-600 px-4 py-2 rounded-lg text-sm">
               Katalog
@@ -85,10 +88,19 @@ const Ezo = () => {
               className="flex-1 border rounded-lg px-4 py-2 text-sm"
             />
 
-            <div className="flex items-center gap-6">
-              <button className="flex items-center gap-2 text-purple-600 text-sm">Kirish</button>
-              <button className="flex items-center gap-2  text-purple-600 text-sm">Saralangan</button>
-              <button className="flex items-center gap-2 text-purple-600 text-sm">Savat</button>
+           <div className="flex items-center gap-6">
+              <div className="text-center">
+                <div className="text-2xl">📍</div>
+                <div className="text-xs">Адреса</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl">👤</div>
+                <div className="text-xs">Войти</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl">🛒</div>
+                <div className="text-xs">Корзина</div>
+              </div>
             </div>
           </div>
         </div>
