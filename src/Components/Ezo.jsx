@@ -9,6 +9,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Outlet } from "react-router-dom";
 
 const Ezo = () => {
   const [products, setProducts] = useState([]);
@@ -22,8 +23,10 @@ const Ezo = () => {
 
   // поиск
   const searchedProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchText.toLowerCase())
-  );
+  product.name.toLowerCase().includes(searchText.toLowerCase()) ||
+  product.category?.toLowerCase().includes(searchText.toLowerCase())
+);
+
 
   // сортировка
   const sortedProducts = [...searchedProducts].sort((a, b) => {
@@ -61,10 +64,13 @@ const Ezo = () => {
       {/* ПОИСК */}
       <div className="flex-1 relative">
         <input
-          type="text"
-          placeholder="Найти на Wildberries"
-          className="w-full h-12 rounded-full px-5 pr-12 text-sm outline-none bg-white border border-gray-300 shadow-sm"
-        />
+  type="text"
+  placeholder="Нayti na Wildberries"
+  value={searchText}
+  onChange={(e) => setSearchText(e.target.value)}
+  className="w-full h-12 rounded-full px-5 pr-12 text-sm outline-none bg-white border border-gray-300 shadow-sm"
+/>
+
         <button className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
           📷
         </button>
@@ -275,7 +281,6 @@ const Ezo = () => {
     © 2026 Ezo Market. Barcha huquqlar himoyalangan.
   </div>
 </footer>
-
     </div>
   );
 };
